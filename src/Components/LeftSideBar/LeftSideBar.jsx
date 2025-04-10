@@ -8,8 +8,15 @@ const LeftSideBar = () => {
       <div className="ls-top">
         <div className="ls-nav">
           <img src={assets.logo} className='logo' alt="" />
+          {/* menu option */}
           <div className="menu">
             <img src={assets.menu_icon} alt="" />
+            {/* sub-menu option */}
+            <div className="sub-menu">
+              <p>Edit profile</p>
+              <hr />
+              <p>Logout</p>
+            </div>
           </div>
         </div>
         <div className="ls-search">
