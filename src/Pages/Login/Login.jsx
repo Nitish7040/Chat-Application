@@ -1,9 +1,26 @@
 import React ,{useState} from 'react'
 import './Login.css'
 import assets from '../../assets/assets'
+import { Signup , login} from '../../Config/FireBase'
+
+
 const Login = () => {
 
 const [CurrState, setCurrState] = useState('Sign up');
+const [username, setUsername] = useState('');
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+
+const onsubmitHandler = async (event) => {
+  event.preventDefault();  
+    if (CurrState === "Sign up") {
+        await Signup(username, email, password);
+    } 
+    else {
+        // Handle login logic here
+       login(email, password)
+    } 
+}
 
   return (
 <>
@@ -12,12 +29,14 @@ const [CurrState, setCurrState] = useState('Sign up');
     <img className="logo" 
          src={assets.logo_big} alt="" />
 
-<form action="" className="login-form">
+<form onSubmit={onsubmitHandler} className="login-form">
     <h2>{CurrState}</h2>
 
-   {CurrState === "Sign up" ? <input type="text" className="form-input" placeholder='Username' required /> : null} 
-    <input type="Email" className="form-input" placeholder='Email' required />
-    <input type="Password" className="form-input" placeholder='Password' required />
+   {CurrState === "Sign up" ? <input onChange={(e) =>setUsername(e.target.value)} value={username} type="text" className="form-input" placeholder='Username' required /> : null} 
+
+    <input type="Email" onChange={(e) =>setEmail(e.target.value)} value={email} className="form-input" placeholder='Email' required />
+
+    <input type="Password" onChange={(e) =>setPassword(e.target.value)} value={password} className="form-input" placeholder='Password' required />
 
     <button type='submit'>{CurrState === "Sign up" ? "Create account" :"Login now"}</button>
 <div className="login-term">
