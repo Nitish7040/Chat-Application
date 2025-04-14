@@ -90,7 +90,7 @@ else {
          <textarea onChange={(e)=>setbio(e.target.value)} value={bio} placeholder='Write profile bio' required></textarea>
          <button type="submit">Save</button>
         </form>
-        <img className='profile-pic' src={image ? URL.createObjectURL(image) : assets.logo_icon} alt="" />
+        <img className='profile-pic' src={image ? URL.createObjectURL(image) : Previmg ? Previmg : assets.logo_icon} alt="" />
       </div>
     </div>
   )
